@@ -2,7 +2,11 @@ module React
   module JSX
     class Processor
       def self.call(input)
-        JSX::transform(input[:data])
+        if JSX::transform_options.respond_to?(:call)
+          JSX::transform_with_proc_options(input)
+        else
+          JSX::transform(input[:data])
+        end
       end
     end
   end

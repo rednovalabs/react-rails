@@ -67,4 +67,18 @@ class JSXTransformTest < ActionDispatch::IntegrationTest
 
     assert !@response.body.include?('strict')
   end
+
+  def test_babel_transformer_can_provide_per_file_options_with_a_proc
+    React::JSX.transform_options = ->(input) do
+      {
+        moduleId: "this_was_not_possible_before/#{input[:name]}",
+        moduleRoot: nil,
+        modules: "amd",
+      }
+    end
+
+    get '/assets/amd_example.js'
+    assert_response :success
+    assert @response.body.include?(%q[define("this_was_not_possible_before/amd_example"])
+  end
 end
