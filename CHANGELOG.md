@@ -4,6 +4,8 @@
 
 #### New Features
 
+- When using the (default) `BabelTransformer`, `config.react.jsx_transform_options` can accept a lambda, proc, or anything that responds to `call` and returns a hash. This is useful if you have Babel transformation options that need to be uniq per file.
+
 #### Deprecation
 
 #### Bug Fixes
