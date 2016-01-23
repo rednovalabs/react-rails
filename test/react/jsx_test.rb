@@ -81,6 +81,6 @@ class JSXTransformTest < ActionDispatch::IntegrationTest
     React::JSX.transform_options = AmdOptions
     get '/assets/amd_example.js'
     assert_response :success
-    assert response.body.include?('define("this_was_not_possible_before/amd_example"')
+    assert response.body.include?('define("this_was_not_possible_before/amd_example"'), response.body
   end
 end
