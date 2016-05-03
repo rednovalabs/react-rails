@@ -19,14 +19,20 @@ in your Ruby on Rails (3.2+) application. `react-rails` can:
 - [Generate components](#component-generator) with a Rails generator
 - [Be extended](#extending-react-rails) with custom renderers, transformers and view helpers
 
-Just getting started with React? Make sure to check out the [Getting Started] (https://facebook.github.io/react/docs/getting-started.html) guide. If you're looking for a Webpack integrated method, see [Related Projects](#related-projects) below.
+Just getting started with React? Make sure to check out the [Getting Started] (https://facebook.github.io/react/docs/getting-started.html) guide. Also, see [Related Projects](#related-projects) below.
 
 ## Installation
 
 Add `react-rails` to your gemfile:
 
 ```ruby
-gem 'react-rails', '~> 1.5.0'
+gem 'react-rails', '~> 1.7.0'
+```
+
+And install:
+
+```
+bundle install
 ```
 
 Next, run the installation script:
@@ -181,7 +187,7 @@ _(It will also be mounted by the UJS on page load.)_
 
 There are some requirements for this to work:
 
-- `react-rails` must load your code. By convention it uses `components.js`, which was created
+- `react-rails` must load your code. By convention, it uses `components.js`, which was created
 by the install task. This file must include your components _and_ their dependencies (eg, Underscore.js).
 - Your components must be accessible in the global scope.
 If you are using `.js.jsx.coffee` files then the wrapper function needs to be taken into account:
@@ -199,7 +205,7 @@ You can configure your pool of JS virtual machines and specify where it should l
 
 ```ruby
 # config/environments/application.rb
-# These are the defaults if you dont specify any yourself
+# These are the defaults if you don't specify any yourself
 MyApp::Application.configure do
   # Settings for the pool of renderers:
   config.react.server_renderer_pool_size  ||= 1  # ExecJS doesn't allow more than one on MRI
@@ -401,5 +407,7 @@ Any subclass of `ExecJSRenderer` may use those hooks (for example, `SprocketsRen
 
 ### Related Projects
 
-1. [react\_on\_rails Gem](https://github.com/shakacode/react_on_rails): Webpack Integration of React with Rails utilizing the modern JavaScript tooling and libraries, including Webpack, Babel, React, Redux, React-Router. You can an example of this live at [www.reactrails.com](http://www.reactrails.com).
-2. [React.rb](http://reactrb.org/): Use Ruby to build reactive user interfaces with React under the covers.[github source code here](https://github.com/zetachang/react.rb).
+- [react\_on\_rails Gem](https://github.com/shakacode/react_on_rails): Webpack Integration of React with Rails utilizing the modern JavaScript tooling and libraries, including Webpack, Babel, React, Redux, React-Router. You can an example of this live at [www.reactrails.com](http://www.reactrails.com).
+- [React.rb](http://reactrb.org/): Use Ruby to build reactive user interfaces with React under the covers.[github source code here](https://github.com/zetachang/react.rb).
+- [react-rails-hot-loader](https://github.com/rmosolgo/react-rails-hot-loader) is a simple live-reloader for `react-rails`.
+- [react-rails-benchmark_renderer](https://github.com/pboling/react-rails-benchmark_renderer) adds performance instrumentation to server rendering.
