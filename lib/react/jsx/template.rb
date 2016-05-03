@@ -10,7 +10,7 @@ module React
       end
 
       def evaluate(scope, locals, &block)
-        @output ||= JSX::transform(data)
+        @output ||= JSX::transform(data, {name: scope.logical_path, filename: file})
       end
     end
   end
